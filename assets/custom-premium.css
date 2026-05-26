@@ -42,7 +42,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Elegant Serifs for Luxury Tone */
-.premium-serif-text {
+.premium-serif-text,
+.premium-hero__title em {
   font-family: var(--font-premium-serif);
   font-style: italic;
   font-weight: 400;

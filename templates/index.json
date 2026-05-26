@@ -137,7 +137,7 @@
       }
     },
     "premium_reviews": {
-      "type": "premium-testimonials",
+      "type": "premium-reviews",
       "settings": {
         "color_scheme": "scheme-2",
         "subtitle": "TESTIMONIALS",
