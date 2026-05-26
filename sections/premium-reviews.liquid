@@ -1,0 +1,190 @@
+<div class="premium-reviews color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="section-heading text-center" style="margin-bottom: 5rem; text-align: center;">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="premium-hero__badge" style="margin-bottom: 1.5rem;">
+            <span class="premium-hero__badge-dot"></span>
+            <span>{{ section.settings.subtitle }}</span>
+          </span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="h1" style="margin-top: 0;">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="premium-reviews__grid">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'review' -%}
+            <div class="premium-reviews__card animate--slide-in" {{ block.shopify_attributes }}>
+              
+              <div>
+                <!-- Stars -->
+                <div class="premium-reviews__stars">
+                  {%- assign rating_count = block.settings.rating -%}
+                  {%- for i in (1..5) -%}
+                    {%- if i <= rating_count -%}
+                      <svg class="premium-reviews__star-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    {%- else -%}
+                      <svg class="premium-reviews__star-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+
+                <!-- Quote Text -->
+                <p class="premium-reviews__quote">
+                  "{{ block.settings.quote | escape }}"
+                </p>
+              </div>
+
+              <!-- Author metadata -->
+              <div class="premium-reviews__author-wrapper">
+                {%- if block.settings.avatar != blank -%}
+                  {{ block.settings.avatar | image_url: width: 100, height: 100 | image_tag: 
+                    class: 'premium-reviews__avatar',
+                    loading: 'lazy',
+                    alt: block.settings.author_name
+                  }}
+                {%- else -%}
+                  <div class="premium-reviews__avatar" style="background: rgba(var(--color-foreground), 0.05); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.6rem; color: rgb(var(--color-foreground)); border: none;">
+                    {{ block.settings.author_name | slice: 0 }}
+                  </div>
+                {%- endif -%}
+
+                <div class="premium-reviews__author-info">
+                  <span class="premium-reviews__author-name">
+                    {{ block.settings.author_name | escape }}
+                    {%- if block.settings.verified -%}
+                      <span class="premium-reviews__verified-badge" title="Verified Purchase">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    {%- endif -%}
+                  </span>
+                  {%- if block.settings.author_title != blank -%}
+                    <span class="premium-reviews__author-title">{{ block.settings.author_title | escape }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Premium Testimonials",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Small Subtitle",
+      "default": "TESTIMONIALS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Endorsed by Connoisseurs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Rating Stars"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "The attention to detailed craftsmanship is absolutely unparalleled. From packaging to product performance, it exceeds everything in my collection."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Eleanor Vance"
+        },
+        {
+          "type": "text",
+          "id": "author_title",
+          "label": "Author Subtitle / Job Title",
+          "default": "Interior Architect"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Author Avatar Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Is Verified Purchase?",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium Testimonials",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Marcus Aurelius",
+            "author_title": "Creative Consultant",
+            "quote": "An absolute masterpiece. It blends effortlessly into my workspace while commanding quiet, respectful attention. Packaging was pristine."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Seraphina Croft",
+            "author_title": "Editorial Stylist",
+            "quote": "Finding items that align with my high-end standards of minimalism was near-impossible until now. Seamless checkout and stellar shipping."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Julian Sterling",
+            "author_title": "Fine Art Collector",
+            "quote": "The texture and premium quality of materials used here cannot be overstated. A truly elite addition that is absolutely worth every cent."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

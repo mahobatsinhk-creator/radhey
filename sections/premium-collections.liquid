@@ -1,0 +1,166 @@
+<div class="premium-collections color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="section-heading text-center" style="margin-bottom: 5rem; text-align: center;">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="premium-hero__badge" style="margin-bottom: 1.5rem;">
+            <span class="premium-hero__badge-dot"></span>
+            <span>{{ section.settings.subtitle }}</span>
+          </span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="h1" style="margin-top: 0;">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="premium-collections__grid">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'premium_collection_card' -%}
+            {%- liquid
+              assign collection = collections[block.settings.collection]
+              assign main_image = block.settings.image | default: collection.featured_image
+              assign title = block.settings.title | default: collection.title | default: "Featured Collection"
+              assign link = collection.url | default: "#"
+            -%}
+            
+            <div class="premium-collections__card animate--slide-in" 
+                 onclick="window.location.href='{{ link }}'" 
+                 {{ block.shopify_attributes }}>
+              
+              <!-- Background Image -->
+              <div class="premium-collections__image-wrapper">
+                {%- if main_image != blank -%}
+                  {{ main_image | image_url: width: 800 | image_tag: 
+                    class: 'premium-collections__image',
+                    loading: 'lazy',
+                    alt: title
+                  }}
+                {%- else -%}
+                  {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg premium-collections__image' }}
+                {%- endif -%}
+              </div>
+
+              <!-- Gradient overlay -->
+              <div class="premium-collections__overlay"></div>
+
+              <!-- Card Content -->
+              <div class="premium-collections__content">
+                {%- if block.settings.badge_text != blank -%}
+                  <span class="premium-collections__badge">
+                    {{ block.settings.badge_text }}
+                  </span>
+                {%- endif -%}
+
+                <h3 class="premium-collections__title">{{ title }}</h3>
+                
+                <span class="premium-collections__link">
+                  <span>{{ section.settings.cta_text }}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Premium Collections",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Small Subtitle",
+      "default": "DESIGN WORKSHOPS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Discover Our Iconic Lines"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Card Call-to-action Link",
+      "default": "DISCOVER LINE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "premium_collection_card",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Collection Title Override",
+          "info": "Leave blank to use the default Collection Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Collection Image Override",
+          "info": "Leave blank to use the default Collection Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Card Badge Text",
+          "default": "LIMITED RUN"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium Collections",
+      "blocks": [
+        {
+          "type": "premium_collection_card",
+          "settings": {
+            "title": "Minimalist Home",
+            "badge_text": "TRENDING NOW"
+          }
+        },
+        {
+          "type": "premium_collection_card",
+          "settings": {
+            "title": "Artisanal Apparel",
+            "badge_text": "NEW SEASON"
+          }
+        },
+        {
+          "type": "premium_collection_card",
+          "settings": {
+            "title": "Crafted Accessories",
+            "badge_text": "EXCLUSIVES"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

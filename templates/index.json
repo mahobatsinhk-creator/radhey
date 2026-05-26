@@ -1,75 +1,192 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "premium_hero": {
+      "type": "premium-hero",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "show_background_pattern": true,
+        "layout_alignment": "left",
+        "badge_text": "NEW ARRIVALS",
+        "heading": "Crafting the Future of <span class='premium-serif-text'>Elegant Living</span>",
+        "description": "Discover curated premium collections crafted by master designers, engineered with timeless elegance to transform your lifestyle.",
+        "button_1_label": "EXPLORE NOW",
+        "button_1_link": "shopify://collections/all",
+        "button_2_label": "VIEW RANGE",
+        "button_2_link": "shopify://collections",
+        "floating_card_1_title": "4.9★ RATED STORE",
+        "floating_card_1_subtitle": "By 12,000+ Happy Clients",
+        "floating_card_2_title": "100% SECURE CHECKOUT",
+        "floating_card_2_subtitle": "Shop with Peace of Mind"
+      }
+    },
+    "premium_features": {
+      "type": "premium-brand-features",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "subtitle": "OUR CORE VALUABLES",
+        "title": "Why Shopping With Us Feels Different",
+        "columns_desktop": 4
+      },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "feature_1": {
+          "type": "premium_feature_card",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "icon": "truck",
+            "title": "Complimentary Delivery",
+            "description": "Receive free signature packaging and premium white-glove home delivery across all domestic orders."
           }
         },
-        "button": {
-          "type": "buttons",
+        "feature_2": {
+          "type": "premium_feature_card",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "icon": "award",
+            "title": "Heritage Craftsmanship",
+            "description": "Each item comes with a certified warranty of premium, ethically sourced, artisanal grade components."
+          }
+        },
+        "feature_3": {
+          "type": "premium_feature_card",
+          "settings": {
+            "icon": "shield",
+            "title": "Secure Encrypted Pay",
+            "description": "Your checkout transaction is shielded by state-of-the-art 256-bit cryptographic SSL protocol."
+          }
+        },
+        "feature_4": {
+          "type": "premium_feature_card",
+          "settings": {
+            "icon": "leaf",
+            "title": "Sustainably Minded",
+            "description": "We dedicate 1% of net profits directly towards restoring native habitats and planting healthy woodlands."
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
-      ],
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ]
+    },
+    "premium_collections": {
+      "type": "premium-collections",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+        "color_scheme": "scheme-1",
+        "subtitle": "DESIGN WORKSHOPS",
+        "title": "Discover Our Iconic Lines",
+        "cta_text": "DISCOVER LINE"
+      },
+      "blocks": {
+        "col_1": {
+          "type": "premium_collection_card",
+          "settings": {
+            "collection": "all",
+            "title": "Minimalist Home",
+            "badge_text": "TRENDING NOW"
+          }
+        },
+        "col_2": {
+          "type": "premium_collection_card",
+          "settings": {
+            "collection": "all",
+            "title": "Artisanal Apparel",
+            "badge_text": "NEW SEASON"
+          }
+        },
+        "col_3": {
+          "type": "premium_collection_card",
+          "settings": {
+            "collection": "all",
+            "title": "Crafted Accessories",
+            "badge_text": "EXCLUSIVES"
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3"
+      ]
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "title": "Trending Essentials",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
+        "show_rating": true,
+        "quick_add": "standard",
         "columns_mobile": "2",
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "premium_reviews": {
+      "type": "premium-testimonials",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "subtitle": "TESTIMONIALS",
+        "title": "Endorsed by Connoisseurs"
+      },
+      "blocks": {
+        "rev_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "An absolute masterpiece. It blends effortlessly into my workspace while commanding quiet, respectful attention. Packaging was pristine.",
+            "author_name": "Marcus Aurelius",
+            "author_title": "Creative Consultant",
+            "verified": true
+          }
+        },
+        "rev_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Finding items that align with my high-end standards of minimalism was near-impossible until now. Seamless checkout and stellar shipping.",
+            "author_name": "Seraphina Croft",
+            "author_title": "Editorial Stylist",
+            "verified": true
+          }
+        },
+        "rev_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "The texture and premium quality of materials used here cannot be overstated. A truly elite addition that is absolutely worth every cent.",
+            "author_name": "Julian Sterling",
+            "author_title": "Fine Art Collector",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "rev_1",
+        "rev_2",
+        "rev_3"
+      ]
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "premium_hero",
+    "premium_features",
+    "premium_collections",
+    "featured_collection",
+    "premium_reviews"
   ]
 }
