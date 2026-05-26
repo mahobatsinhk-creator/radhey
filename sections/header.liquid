@@ -305,6 +305,66 @@
   </header>
 </{{ header_tag }}>
 
+{%- if section.settings.show_features_bar -%}
+  <div class="header-features-bar">
+    <div class="header-features-bar__grid">
+      
+      <!-- Feature 1 -->
+      <div class="header-features-bar__item">
+        <div class="header-features-bar__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="header-features-bar__content">
+          <span class="header-features-bar__title">{{ section.settings.feature_1_title }}</span>
+          <span class="header-features-bar__subtitle">{{ section.settings.feature_1_subtitle }}</span>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="header-features-bar__item">
+        <div class="header-features-bar__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="12 2 22 8.5 12 22 2 8.5 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="header-features-bar__content">
+          <span class="header-features-bar__title">{{ section.settings.feature_2_title }}</span>
+          <span class="header-features-bar__subtitle">{{ section.settings.feature_2_subtitle }}</span>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="header-features-bar__item">
+        <div class="header-features-bar__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="header-features-bar__content">
+          <span class="header-features-bar__title">{{ section.settings.feature_3_title }}</span>
+          <span class="header-features-bar__subtitle">{{ section.settings.feature_3_subtitle }}</span>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="header-features-bar__item">
+        <div class="header-features-bar__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+          </svg>
+        </div>
+        <div class="header-features-bar__content">
+          <span class="header-features-bar__title">{{ section.settings.feature_4_title }}</span>
+          <span class="header-features-bar__subtitle">{{ section.settings.feature_4_subtitle }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{%- endif -%}
+
 {%- if settings.cart_type == 'notification' -%}
   {%- render 'cart-notification',
     color_scheme: section.settings.color_scheme,
@@ -722,6 +782,64 @@
       "id": "promo_2_link_label",
       "label": "Promo 2 Link Label",
       "default": "Discover Luxury"
+    },
+    {
+      "type": "header",
+      "content": "Trust Features Sub-Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_features_bar",
+      "label": "Show Trust Features Sub-Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Feature 1 Title",
+      "default": "PREMIUM QUALITY"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_subtitle",
+      "label": "Feature 1 Subtitle",
+      "default": "Finest Fabric & Craftsmanship"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Feature 2 Title",
+      "default": "EXCLUSIVE DESIGNS"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_subtitle",
+      "label": "Feature 2 Subtitle",
+      "default": "Unique & Limited Collection"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Feature 3 Title",
+      "default": "SECURE PAYMENT"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_subtitle",
+      "label": "Feature 3 Subtitle",
+      "default": "100% Secure Transactions"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Feature 4 Title",
+      "default": "24/7 SUPPORT"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_subtitle",
+      "label": "Feature 4 Subtitle",
+      "default": "We're Here For You"
     }
   ],
   "blocks": [
