@@ -711,3 +711,151 @@ h1, h2, h3, h4, h5, h6,
   opacity: 0.5;
   margin-top: 0.2rem;
 }
+
+/* ==========================================================================
+   Section 5: Elite Mega Menu Promotions Grid
+   ========================================================================== */
+.mega-menu__grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 3rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.mega-menu__grid-links {
+  grid-column: span 4;
+}
+
+.mega-menu__promos {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  border-left: 1px solid rgba(var(--color-foreground), 0.08);
+  padding-left: 3rem;
+}
+
+.mega-menu__promo-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-premium-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-premium-soft);
+  border: 1px solid rgba(var(--color-foreground), 0.05);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: var(--transition-smooth);
+}
+
+.mega-menu__promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-premium-hover);
+}
+
+.mega-menu__promo-img-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: rgba(var(--color-foreground), 0.02);
+}
+
+.mega-menu__promo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.mega-menu__promo-card:hover .mega-menu__promo-img {
+  transform: scale(1.05);
+}
+
+.mega-menu__promo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+  z-index: 2;
+}
+
+.mega-menu__promo-content {
+  position: relative;
+  z-index: 3;
+  padding: 1.8rem;
+  color: #ffffff;
+}
+
+.mega-menu__promo-badge {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-premium-round);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+.mega-menu__promo-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem 0;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.mega-menu__promo-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.9;
+  transition: var(--transition-smooth);
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.mega-menu__promo-link svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: var(--transition-smooth);
+}
+
+.mega-menu__promo-card:hover .mega-menu__promo-link {
+  gap: 0.8rem;
+  opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
+  .mega-menu__grid-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .mega-menu__grid-links {
+    grid-column: span 1;
+  }
+  .mega-menu__promos {
+    grid-column: span 1;
+    border-left: none;
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+}
+
