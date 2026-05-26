@@ -39,16 +39,13 @@ File: [premium-reviews.liquid](file:///e:/RADHEY/store/sections/premium-reviews.
 
 ---
 
-## 3. Connected Homepage Setup
+## 3. Elite Mega Menu Promotions
 
-We replaced your home template's standard static banner with a beautifully curated premium landing page flow.
+We refactored the standard menu navigation dropdown into an immersive luxury experience.
 
-- **Sequence**: [index.json](file:///e:/RADHEY/store/templates/index.json) now displays:
-  1. `premium_hero` (High-impact brand intro)
-  2. `premium_features` (Brand value trust cards)
-  3. `premium_collections` (Main department navigator)
-  4. `featured_collection` (Trending single product grid)
-  5. `premium_reviews` (Elite social proof testimonials)
+- **Split Grid**: Category link columns remain neatly organized on the left, while beautiful visual product banners display on the right.
+- **Merchant Customization**: Fully configured within your **Header** settings under the Shopify Theme Editor.
+- **Hover Scale Effects**: Moving your mouse over the cards triggers a smooth, premium zoom-in animation on images.
 
 ---
 
@@ -59,4 +56,9 @@ To access and configure your beautiful new store UI:
 2. Go to **Online Store** -> **Themes**.
 3. Next to your active theme, click **Customize**.
 4. You will instantly see the new **Premium Interactive Hero**, **Premium Brand Features**, **Premium Collections**, and **Premium Testimonials** sections fully rendered on your homepage screen!
-5. Drag and drop, select collections, write custom copy, or choose icons with **zero coding required**.
+5. To configure the **Mega Menu promotions**:
+   - In the left-hand editor column, click on the **Header** section.
+   - Scroll down to the **Premium Mega Menu Promotions** settings block.
+   - Enter your trigger link name (e.g., `PREMIUM COLLECTION`). This is case-insensitive.
+   - Upload high-quality promo images, set text badges (e.g., `NEW SEASON`), write titles (e.g., `The Bridal Edit`), and set link URLs.
+   - Hover over `PREMIUM COLLECTION` in your header to see the gorgeous live split grid render!

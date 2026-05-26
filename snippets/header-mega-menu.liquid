@@ -25,14 +25,28 @@
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
+              {%- liquid
+                assign show_promos = false
+                assign trigger_handle = link.title | downcase
+                assign promo_trigger = section.settings.mega_menu_promo_trigger | downcase
+                if trigger_handle == promo_trigger and promo_trigger != blank
+                  assign show_promos = true
+                endif
+              -%}
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
                 class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
+                {%- if show_promos -%}
+                  <div class="mega-menu__grid-container">
+                    <div class="mega-menu__grid-links">
+                {%- endif -%}
+
                 <ul
                   class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
+                  style="{% if show_promos %}width: 100%; max-width: 100%; padding: 0;{% endif %}"
                 >
                   {%- for childlink in link.links -%}
                     <li>
@@ -67,6 +81,81 @@
                     </li>
                   {%- endfor -%}
                 </ul>
+
+                {%- if show_promos -%}
+                    </div> <!-- end mega-menu__grid-links -->
+                    
+                    <!-- Right Hand Visual Promo Column -->
+                    <div class="mega-menu__promos">
+                      
+                      <!-- Promo 1 Card -->
+                      <div class="mega-menu__promo-card" onclick="window.location.href='{{ section.settings.promo_1_link | default: '#' }}'">
+                        <div class="mega-menu__promo-img-wrapper">
+                          {%- if section.settings.promo_1_image != blank -%}
+                            {{ section.settings.promo_1_image | image_url: width: 400 | image_tag: 
+                              class: 'mega-menu__promo-img',
+                              loading: 'lazy',
+                              alt: section.settings.promo_1_title
+                            }}
+                          {%- else -%}
+                            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg mega-menu__promo-img' }}
+                          {%- endif -%}
+                        </div>
+                        <div class="mega-menu__promo-overlay"></div>
+                        <div class="mega-menu__promo-content">
+                          {%- if section.settings.promo_1_badge != blank -%}
+                            <span class="mega-menu__promo-badge">{{ section.settings.promo_1_badge }}</span>
+                          {%- endif -%}
+                          {%- if section.settings.promo_1_title != blank -%}
+                            <h4 class="mega-menu__promo-title">{{ section.settings.promo_1_title }}</h4>
+                          {%- endif -%}
+                          {%- if section.settings.promo_1_link_label != blank -%}
+                            <span class="mega-menu__promo-link">
+                              {{ section.settings.promo_1_link_label }}
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                              </svg>
+                            </span>
+                          {%- endif -%}
+                        </div>
+                      </div>
+
+                      <!-- Promo 2 Card -->
+                      <div class="mega-menu__promo-card" onclick="window.location.href='{{ section.settings.promo_2_link | default: '#' }}'">
+                        <div class="mega-menu__promo-img-wrapper">
+                          {%- if section.settings.promo_2_image != blank -%}
+                            {{ section.settings.promo_2_image | image_url: width: 400 | image_tag: 
+                              class: 'mega-menu__promo-img',
+                              loading: 'lazy',
+                              alt: section.settings.promo_2_title
+                            }}
+                          {%- else -%}
+                            {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg mega-menu__promo-img' }}
+                          {%- endif -%}
+                        </div>
+                        <div class="mega-menu__promo-overlay"></div>
+                        <div class="mega-menu__promo-content">
+                          {%- if section.settings.promo_2_badge != blank -%}
+                            <span class="mega-menu__promo-badge">{{ section.settings.promo_2_badge }}</span>
+                          {%- endif -%}
+                          {%- if section.settings.promo_2_title != blank -%}
+                            <h4 class="mega-menu__promo-title">{{ section.settings.promo_2_title }}</h4>
+                          {%- endif -%}
+                          {%- if section.settings.promo_2_link_label != blank -%}
+                            <span class="mega-menu__promo-link">
+                              {{ section.settings.promo_2_link_label }}
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                              </svg>
+                            </span>
+                          {%- endif -%}
+                        </div>
+                      </div>
+
+                    </div> <!-- end mega-menu__promos -->
+                  </div> <!-- end mega-menu__grid-container -->
+                {%- endif -%}
+
               </div>
             </details>
           </header-menu>
